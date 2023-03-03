@@ -17,6 +17,12 @@ public class User {
 
     private String name;
     private String secondName;
+    @OneToOne(mappedBy = "user")
+    private Passport passport;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
