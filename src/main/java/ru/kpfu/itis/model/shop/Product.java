@@ -1,11 +1,12 @@
 package ru.kpfu.itis.model.shop;
 
+import lombok.Getter;
 import ru.kpfu.itis.model.shop.Cart;
 
 import javax.persistence.*;
 
 @Entity(name = "products")
-
+@Getter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,21 +11,19 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    User getUserByEmail(String email);
-
-    List<User> findAllByIdInAAndEmailNotN(List<Integer> ids);
-
-    Page<User> findAll(Pageable pageable);
-
-    @Query(value = "select * from user u where u.name like ?1",nativeQuery = true)
-    List<User> findAllByName(String name);
-
-    @Query("select u from User u where u.email = :email")
-    List<User> fingAllByEmail(String email);
-
-    @Query(value = "select u from User u where u.name = :name and u.id = :id")
-    User findUserByNameAndId(@Param("name") String name, @Param("id") Integer id);
-
-    @Query(value = "select u from User where u.id in :ids")
-    List<User> findAllByIds(@Param("ids")List<Integer> ids);
+//    User getUserByEmail(String email);
+//
+//    List<User> findAllByIdInAAndEmailNotN(List<Integer> ids);
+//
+//    Page<User> findAll(Pageable pageable);
+//
+//    @Query(value = "select * from user u where u.name like ?1",nativeQuery = true)
+//    List<User> findAllByName(String name);
+//
+//    @Query("select u from User u where u.email = :email")
+//    List<User> fingAllByEmail(String email);
+//
+//    @Query(value = "select u from User u where u.name = :name and u.id = :id")
+//    User findUserByNameAndId(@Param("name") String name, @Param("id") Integer id);
+//
 }

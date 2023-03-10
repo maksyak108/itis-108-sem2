@@ -1,11 +1,15 @@
 package ru.kpfu.itis.model.shop;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.kpfu.itis.model.shop.Cart;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "shops")
+@Getter
+@Setter
 public class Shop {
 
     @Id
