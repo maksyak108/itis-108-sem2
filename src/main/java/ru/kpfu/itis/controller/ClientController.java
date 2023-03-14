@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.kpfu.itis.dto.ClientDto;
 import ru.kpfu.itis.model.shop.Client;
 import ru.kpfu.itis.service.ClientService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/clients")
@@ -19,29 +21,33 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable Integer id) {
+    public ResponseEntity<ClientDto> getClientById(@PathVariable Integer id) {
         Optional<Client> client = clientService.findById(id);
         if (client.isPresent()) {
-            return ResponseEntity.ok(client.get());
+            ClientDto clientDto = new ClientDto(client.get().getId(), client.get().getName());
+            return ResponseEntity.ok(clientDto);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Client> getClientByName(@PathVariable String name) {
+    public ResponseEntity<ClientDto> getClientByName(@PathVariable String name) {
         Client client = clientService.findByName(name);
         if (client != null) {
-            return ResponseEntity.ok(client);
+            ClientDto clientDto = new ClientDto(client.getId(), client.getName());
+            return ResponseEntity.ok(clientDto);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @GetMapping("/no-cart")
-    public List<Client> getClientsWithNoCart() {
-        return clientService.findByCartIsNull();
+    public List<ClientDto> getClientsWithNoCart() {
+        List<Client> clients = clientService.findByCartIsNull();
+        return clients.stream().map(c -> new ClientDto(c.getId(), c.getName())).collect(Collectors.toList());
     }
 
 }

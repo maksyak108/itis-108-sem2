@@ -1,5 +1,6 @@
 package ru.kpfu.itis.model.shop;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import ru.kpfu.itis.model.shop.Cart;
@@ -20,6 +21,7 @@ public class Shop {
     private String name;
 
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(
             name = "shop_carts",
             joinColumns = @JoinColumn(name = "shop_id", referencedColumnName = "id"),

@@ -1,5 +1,7 @@
 package ru.kpfu.itis.model.shop;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import ru.kpfu.itis.model.shop.Cart;
 
@@ -19,6 +21,7 @@ public class Product {
     private Integer price;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     @JoinColumn(name = "cart_id")
     private Cart cart;
 }

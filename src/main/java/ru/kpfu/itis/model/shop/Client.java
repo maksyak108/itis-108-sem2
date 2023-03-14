@@ -1,5 +1,6 @@
 package ru.kpfu.itis.model.shop;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import ru.kpfu.itis.model.shop.Cart;
 
@@ -15,6 +16,7 @@ import javax.persistence.*;
 public class Client {
 
     private String name;
+    @JsonBackReference
     @OneToOne(mappedBy = "client")
     private Cart cart;
 
