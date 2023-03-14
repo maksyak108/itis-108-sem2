@@ -1,8 +1,13 @@
 package ru.kpfu.itis.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity(name = "passports")
+@Getter
+@Setter
 public class Passport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

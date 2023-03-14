@@ -16,25 +16,21 @@ import java.util.Set;
 @Builder
 @Getter
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
-    private String secondName;
+
+    private String email;
+
     @OneToOne(mappedBy = "user")
     private Passport passport;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
-    private String email;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birth;
-
-    @Size(min = 8, max = 63, message = "Password should contains from 8 to 63 symbols")
     @Column(nullable = false, length = 63)
     private String password;
 
@@ -46,3 +42,34 @@ public class User {
     )
     private Set<Role> roles;
 }
+//public class User {
+//
+//    private String name;
+//    private String secondName;
+//    @OneToOne(mappedBy = "user")
+//    private Passport passport;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "group_id")
+//    private Group group;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
+//
+//    private String email;
+//
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    private LocalDate birth;
+//
+//    @Size(min = 8, max = 63, message = "Password should contains from 8 to 63 symbols")
+//    @Column(nullable = false, length = 63)
+//    private String password;
+//
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "user_role",
+//            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+//    )
+//    private Set<Role> roles;
+//}
