@@ -1,7 +1,8 @@
 package ru.kpfu.itis.service;
 
+import ru.kpfu.itis.dto.ClientDto;
+import ru.kpfu.itis.dto.CreateClientRequestDto;
 import ru.kpfu.itis.model.shop.Client;
-import ru.kpfu.itis.repository.shop.ClientRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +13,6 @@ public interface ClientService {
     Optional<Client> findById(Integer id);
 
     List<Client> findByCartIsNull();
+
+    ClientDto create(CreateClientRequestDto clientDto);
 }

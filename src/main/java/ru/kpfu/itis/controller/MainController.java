@@ -1,5 +1,7 @@
 package ru.kpfu.itis.controller;
 
+import org.springframework.boot.Banner;
+import ru.kpfu.itis.dto.CreateClientRequestDto;
 import ru.kpfu.itis.dto.CreateUserRequestDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,5 +23,16 @@ public class MainController {
     public String signUp(Model model) {
         model.addAttribute("user", new CreateUserRequestDto());
         return "sign_up";
+    }
+
+    @GetMapping("/registerClient")
+    public String registerClient(Model model){
+        model.addAttribute("client", new CreateClientRequestDto());
+        return "registerClient";
+    }
+
+    @GetMapping("/clientSearch")
+    public String clientSearch() {
+        return "clientSearch";
     }
 }

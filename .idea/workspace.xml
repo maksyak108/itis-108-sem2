@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="accdd218-866d-463f-9de8-f6861665278f" name="Changes" comment="Some changes for ClassWork 10.03">
+    <list default="true" id="accdd218-866d-463f-9de8-f6861665278f" name="Changes" comment="Dto for last HW, preparing for spring security">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/ShopController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/model/shop/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/model/shop/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/dto/ClientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/dto/ClientDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/model/shop/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/model/shop/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/model/shop/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/model/shop/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/repository/shop/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/repository/shop/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/service/impl/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kpfu/itis/service/impl/ClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sign_up.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +62,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -104,6 +107,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ru.kpfu.itis.model" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="ru.kpfu.itis.config" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
@@ -157,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676014406232</updated>
       <workItem from="1676014407356" duration="14324000" />
-      <workItem from="1676625023094" duration="51689000" />
+      <workItem from="1676625023094" duration="68109000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1676016465182</created>
@@ -208,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678798410622</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Dto for last HW, preparing for spring security">
+      <created>1678809457138</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678809457138</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +235,8 @@
     <MESSAGE value="ClassWork done" />
     <MESSAGE value="ClassWork 10.03 added" />
     <MESSAGE value="Some changes for ClassWork 10.03" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes for ClassWork 10.03" />
+    <MESSAGE value="Dto for last HW, preparing for spring security" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dto for last HW, preparing for spring security" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
