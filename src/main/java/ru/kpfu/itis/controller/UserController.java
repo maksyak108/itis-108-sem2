@@ -1,12 +1,19 @@
 package ru.kpfu.itis.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.dto.CreateUserRequestDto;
 import ru.kpfu.itis.dto.UserResponseDto;
+import ru.kpfu.itis.model.User;
+import ru.kpfu.itis.repository.UserRepository;
+import ru.kpfu.itis.security.CustomUserDetails;
 import ru.kpfu.itis.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +22,22 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
+
+    @GetMapping("/userProfile")
+    public String showProfile(Model model, Principal principal) {
+        String email = principal.getName();
+        User user = userRepository.getUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        model.addAttribute("user", user);
+        return "userProfile";
+    }
+
+    @GetMapping("/anotherUser")
+    public String showAnotherUser(Model model, @RequestParam String name) {
+        User user = userRepository.getUserByName(name).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        model.addAttribute("user", user);
+        return "anotherUser";
+    }
 
     @ResponseBody
     @GetMapping(value = {"/users/{id}", "users"})
