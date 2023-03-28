@@ -1,66 +1,78 @@
-package ru.kpfu.itis.controller;
-
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import ru.kpfu.itis.dto.CreateUserRequestDto;
-import ru.kpfu.itis.dto.UserResponseDto;
-import ru.kpfu.itis.model.User;
-import ru.kpfu.itis.repository.UserRepository;
-import ru.kpfu.itis.security.CustomUserDetails;
-import ru.kpfu.itis.service.UserService;
-
-import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
-
-@Controller
-@AllArgsConstructor
-public class UserController {
-
-    private final UserService userService;
-    private final UserRepository userRepository;
-
-    @GetMapping("/userProfile")
-    public String showProfile(Model model, Principal principal) {
-        String email = principal.getName();
-        User user = userRepository.getUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("User not found"));
-        model.addAttribute("user", user);
-        return "userProfile";
-    }
-
-    @GetMapping("/anotherUser")
-    public String showAnotherUser(Model model, @RequestParam String name) {
-        User user = userRepository.getUserByName(name).orElseThrow(() -> new IllegalArgumentException("User not found"));
-        model.addAttribute("user", user);
-        return "anotherUser";
-    }
-
-    @ResponseBody
-    @GetMapping(value = {"/users/{id}", "users"})
-    public List<UserResponseDto> user(@PathVariable(required = false) Optional<Integer> id) {
-        if (id.isPresent()) {
-            return List.of(userService.findById(id.get()).get());
-        } else {
-            return userService.findAll();
-        }
-    }
-
-    @ResponseBody
-    @GetMapping("/hello")
-    public String hello(@RequestParam Optional<String> name) {
-        return String.format("Hello, %s!", name.orElse("Ivan"));
-    }
-
-    @PostMapping("/user")
-    public String createUser(@ModelAttribute CreateUserRequestDto user) {
-        userService.create(user);
-        return "sign_up_success";
-    }
-}
+//package ru.kpfu.itis.controller;
+//
+//import lombok.AllArgsConstructor;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.data.repository.query.Param;
+//import org.springframework.security.core.annotation.AuthenticationPrincipal;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.*;
+//import ru.kpfu.itis.dto.CreateUserRequestDto;
+//import ru.kpfu.itis.dto.UserResponseDto;
+//import ru.kpfu.itis.model.User;
+//import ru.kpfu.itis.repository.UserRepository;
+//import ru.kpfu.itis.security.CustomUserDetails;
+//import ru.kpfu.itis.service.UserService;
+//
+//import javax.servlet.http.HttpServletRequest;
+//import java.security.Principal;
+//import java.util.List;
+//import java.util.Optional;
+//
+//@Controller
+//@AllArgsConstructor
+//public class UserController {
+//
+//    private final UserService userService;
+//    private final UserRepository userRepository;
+//
+//    @GetMapping("/userProfile")
+//    public String showProfile(Model model, Principal principal) {
+//        String email = principal.getName();
+//        User user = userRepository.getUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("User not found"));
+//        model.addAttribute("user", user);
+//        return "userProfile";
+//    }
+//
+//    @GetMapping("/anotherUser")
+//    public String showAnotherUser(Model model, @RequestParam String name) {
+//        User user = userRepository.getUserByName(name).orElseThrow(() -> new IllegalArgumentException("User not found"));
+//        model.addAttribute("user", user);
+//        return "anotherUser";
+//    }
+//
+//    @ResponseBody
+//    @GetMapping(value = {"/users/{id}", "users"})
+//    public List<UserResponseDto> user(@PathVariable(required = false) Optional<Integer> id) {
+//        if (id.isPresent()) {
+//            return List.of(userService.findById(id.get()).get());
+//        } else {
+//            return userService.findAll();
+//        }
+//    }
+//
+//    @ResponseBody
+//    @GetMapping("/hello")
+//    public String hello(@RequestParam Optional<String> name) {
+//        return String.format("Hello, %s!", name.orElse("Ivan"));
+//    }
+//
+//    @PostMapping("/user")
+//    public String createUser(@ModelAttribute CreateUserRequestDto user, HttpServletRequest request) {
+//        String url = request.getRequestURL().toString().replace(request.getServletPath(), "");
+//        userService.create(user, url);
+//        return "sign_up_success";
+//    }
+//
+//    @GetMapping("/verification")
+//    public String verify(@Param("code") String code) {
+//        if (userService.verify(code)) {
+//            return "verification_success";
+//        } else {
+//            return "verification_failed";
+//        }
+//    }
+//}
 
 //@RestController
 //public class UserController {

@@ -10,6 +10,8 @@ public class CreateClientRequestDto {
     @NotBlank(message = "Name shouldn't be blank")
     private String name;
 
+    @NotBlank(message = "Email shouldn't be blank")
+    private String email;
     @Size(min = 8, max = 63, message = "Password should contains from 8 to 63 symbols")
     private String password;
 }

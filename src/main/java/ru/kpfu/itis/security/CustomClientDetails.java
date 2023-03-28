@@ -49,6 +49,6 @@ public class CustomClientDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return client.isEnabled();
     }
 }

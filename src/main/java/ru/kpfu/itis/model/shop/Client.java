@@ -18,6 +18,8 @@ import java.util.Set;
 public class Client {
 
     private String name;
+
+    private String email;
     @JsonBackReference
     @OneToOne(mappedBy = "client")
     private Cart cart;
@@ -36,4 +38,9 @@ public class Client {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private Set<Role> roles;
+
+    private boolean enabled;
+
+    @Column(length = 64)
+    private String verificationCode;
 }

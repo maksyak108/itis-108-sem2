@@ -19,4 +19,8 @@ public interface ClientRepository extends JpaRepository<Client,Integer> {
     List<Client> findByCartIsNull();
 
     Optional<Client> getClientByName(String name);
+
+    Client findByVerificationCode(String code);
+
+    Optional<Client> getClientByEmail(String email);
 }

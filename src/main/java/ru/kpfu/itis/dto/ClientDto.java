@@ -14,15 +14,19 @@ public class ClientDto {
     private Integer id;
     private String name;
 
-    public ClientDto(Integer id, String name) {
+    private String email;
+
+    public ClientDto(Integer id, String name, String email) {
         this.id = id;
         this.name = name;
+        this.email = email;
     }
 
     public static ClientDto fromEntity(Client client) {
         return ClientDto.builder()
                 .id(client.getId())
                 .name(client.getName())
+                .email(client.getEmail())
                 .build();
     }
 }
