@@ -1,14 +1,12 @@
 package ru.kpfu.itis.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.dto.ClientDto;
 import ru.kpfu.itis.dto.CreateClientRequestDto;
-import ru.kpfu.itis.dto.CreateUserRequestDto;
 import ru.kpfu.itis.model.shop.Client;
 import ru.kpfu.itis.service.ClientService;
 
