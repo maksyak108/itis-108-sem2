@@ -1,6 +1,7 @@
 package ru.kpfu.itis.controller;
 
 import org.springframework.boot.Banner;
+import ru.kpfu.itis.aspect.Loggable;
 import ru.kpfu.itis.dto.CreateClientRequestDto;
 import ru.kpfu.itis.dto.CreateUserRequestDto;
 import org.springframework.stereotype.Controller;
@@ -13,12 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 public class MainController {
 
     @GetMapping("/home")
+    @Loggable
     public String home(HttpServletRequest httpServletRequest) {
         String currentPrincipalName = httpServletRequest.getUserPrincipal().getName();
         return "home";
     }
 
     @GetMapping("/")
+    @Loggable
     public String index() {
         return "index";
     }
@@ -30,12 +33,14 @@ public class MainController {
     }
 
     @GetMapping("/registerClient")
+    @Loggable
     public String registerClient(Model model){
         model.addAttribute("client", new CreateClientRequestDto());
         return "registerClient";
     }
 
     @GetMapping("/clientSearch")
+    @Loggable
     public String clientSearch() {
         return "clientSearch";
     }
