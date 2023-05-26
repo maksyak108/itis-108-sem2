@@ -21,10 +21,9 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @ResponseBody
-    @GetMapping("/{id}")
-    public ResponseEntity<ClientDto> getClientById(@PathVariable Integer id) {
-        Optional<Client> client = clientService.findById(id);
+    @GetMapping("/clientID")
+    public ResponseEntity<?> searchClientById(@RequestParam("id") String id) {
+        Optional<Client> client = clientService.findById(Integer.valueOf(id));
         if (client.isPresent()) {
             ClientDto clientDto = new ClientDto(client.get().getId(), client.get().getName(), client.get().getEmail());
             return ResponseEntity.ok(clientDto);
@@ -33,9 +32,8 @@ public class ClientController {
         }
     }
 
-    @ResponseBody
-    @GetMapping("/name/{name}")
-    public ResponseEntity<ClientDto> getClientByName(@PathVariable String name) {
+    @GetMapping("/name")
+    public ResponseEntity<?> getClientByName(@RequestParam("name") String name) {
         Client client = clientService.findByName(name);
         if (client != null) {
             ClientDto clientDto = new ClientDto(client.getId(), client.getName(), client.getEmail());
